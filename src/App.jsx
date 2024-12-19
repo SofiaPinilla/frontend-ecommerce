@@ -4,18 +4,25 @@ import { UserProvider } from "./context/UserContext/UserState";
 import Login from "./components/Login/Login";
 import Profile from "./components/Profile/Profile";
 import Header from "./components/Header/Header";
+import { ProductProvider } from "./context/ProductContext/ProductState";
+import Products from "./components/Products/Products";
+import Cart from "./components/Cart/Cart";
 
 function App() {
   return (
     <>
       <UserProvider>
         <BrowserRouter>
-          {/* los componentes */}
-          <Header/>
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+          <ProductProvider>
+            {/* los componentes */}
+            <Header />
+            <Routes>
+              <Route path="/" element={<Products/>}/>
+              <Route path="/cart" element={<Cart/>}/>
+              <Route path="/login" element={<Login />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </ProductProvider>
         </BrowserRouter>
       </UserProvider>
     </>
